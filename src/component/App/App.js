@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import Entete from '../Entete/Entete';
+import ListeProduit from '../ListeProduit/ListeProduit';
 
 
 export default class App extends React.Component{
@@ -10,11 +11,12 @@ export default class App extends React.Component{
       compteur : 0  
     };
 
-    this.augmenter = this.augmenter.bind(this);
+    /*this.augmenter = this.augmenter.bind(this);
     this.decroitre = this.decroitre.bind(this);
+    */
   }
 
-  augmenter(){
+  /*augmenter(){
     console.log("+1");
     //this.state.compteur++;
     this.setState(  {
@@ -33,13 +35,20 @@ export default class App extends React.Component{
     //this.props.nombre--;
 
 
-  }
+  }*/
   render(){
 
     // Il peut y avoir du code ici...
 
     return(
       <main>
+        <Entete titre="Mon application react"/>
+        <ListeProduit />
+      
+      
+      
+      
+      {/*<main>
         <Entete titre="Mon application react" fctDecroitre={this.decroitre} nombre={this.state.compteur}/>
         <Entete titre="Mon application react" fctDecroitre={this.decroitre} nombre={this.state.compteur}/>
 
@@ -50,8 +59,9 @@ export default class App extends React.Component{
           <button onClick={this.augmenter}>Augmenter les trucs</button>
 
         </article>
+           */}
       </main>
-      
+ 
     );
   }
 
