@@ -22,16 +22,16 @@ export default class ListeProduit extends React.Component{
   }
 
   render(){
-
+    const mesProduits = this.state.items.map((item, index)=>{
+                                              return <li key={item.id}>{item.nom}</li>
+                                              });
 
     return(
       <article>
         <h1>Liste de produit</h1>
         <section>
           <ul>
-          {this.state.items.map((item)=>{
-            return <li>{item.nom}</li>
-          })} 
+          {mesProduits} 
         </ul>
 
         </section>
