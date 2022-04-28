@@ -2,7 +2,9 @@ import './App.css';
 import React from 'react';
 import Entete from '../Entete/Entete';
 import ListeProduit from '../ListeProduit/ListeProduit';
-
+import {Route, Switch, BrowserRouter } from 'react-router-dom';
+import Accueil from '../Accueil/Accueil';
+import DetailsProduit from '../DetailsProduit/DetailsProduit';
 
 export default class App extends React.Component{
   constructor(){
@@ -43,24 +45,18 @@ export default class App extends React.Component{
     return(
       <main>
         <Entete titre="Mon application react"/>
-        <ListeProduit />
-      
-      
-      
-      
-      {/*<main>
-        <Entete titre="Mon application react" fctDecroitre={this.decroitre} nombre={this.state.compteur}/>
-        <Entete titre="Mon application react" fctDecroitre={this.decroitre} nombre={this.state.compteur}/>
+        <Switch>
+          <Route exact path="/produit" component={ListeProduit} />
+          <Route exact path="/" component={Accueil} />
+          <Route exact path="/produit/:id_biere" component={DetailsProduit} />
+             
+          <Route exact path="*" render={()=><p>Page non trouvée</p>} />
+        </Switch>
 
-        <article>
-          <h1>Allo le monde</h1>
-          <p>Nombre de truc</p>
-          <p>{this.state.compteur}</p>
-          <button onClick={this.augmenter}>Augmenter les trucs</button>
-
-        </article>
-           */}
       </main>
+      
+      
+    
  
     );
   }
