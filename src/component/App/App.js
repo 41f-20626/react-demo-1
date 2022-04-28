@@ -2,7 +2,7 @@ import './App.css';
 import React from 'react';
 import Entete from '../Entete/Entete';
 import ListeProduit from '../ListeProduit/ListeProduit';
-import {Route, Switch, BrowserRouter } from 'react-router-dom';
+import {Route, Routes, BrowserRouter as Router } from 'react-router-dom';
 import Accueil from '../Accueil/Accueil';
 import DetailsProduit from '../DetailsProduit/DetailsProduit';
 
@@ -43,17 +43,17 @@ export default class App extends React.Component{
     // Il peut y avoir du code ici...
 
     return(
-      <main>
+      <Router>
         <Entete titre="Mon application react"/>
-        <Switch>
-          <Route exact path="/produit" component={ListeProduit} />
-          <Route exact path="/" component={Accueil} />
-          <Route exact path="/produit/:id_biere" component={DetailsProduit} />
+        <Routes>
+          <Route path="/" element={<Accueil/>} />
+          <Route path="/produit" element={<ListeProduit/>} />
+          <Route path="/produit/:id_biere" element={<DetailsProduit/>} />
              
-          <Route exact path="*" render={()=><p>Page non trouvée</p>} />
-        </Switch>
+          <Route path="*" element={<p>Page non trouvée</p>} />
+        </Routes>
 
-      </main>
+      </Router>
       
       
     

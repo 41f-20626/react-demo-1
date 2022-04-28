@@ -36,11 +36,11 @@ export default class Entete extends React.Component{
         <nav>
           <ul>
             <li><a href='/'>Accueil (a)</a></li>
-            <li><Link exact to='/'>Accueil (Link)</Link></li>
-            <li><NavLink exact to='/'>Accueil (NavLink)</NavLink></li>
+            <li><Link to='/'>Accueil (Link)</Link></li>
+            <li><NavLink to='/'>Accueil (NavLink)</NavLink></li>
             <li><a href='/produit'>Liste des produits (a)</a></li>
-            <li><Link exact to='/produit'>Liste des produits (link)</Link></li>
-            <li><NavLink exact to='/produit'>Liste des produits (NavLink)</NavLink></li>
+            <li><Link to='/produit'>Liste des produits (link)</Link></li>
+            <li><NavLink to='/produit'>Liste des produits (NavLink)</NavLink></li>
            
           </ul>
 
