@@ -1,5 +1,6 @@
 import './ListeProduit.css';
 import React from 'react';
+import Produit from '../Produit/Produit';
 
 export default class ListeProduit extends React.Component{
   constructor(props){
@@ -7,6 +8,7 @@ export default class ListeProduit extends React.Component{
 
     this.state = {
       items: []
+
     };
     
     for(let i=0; i< 25; i++){
@@ -22,17 +24,19 @@ export default class ListeProduit extends React.Component{
   }
 
   render(){
+    console.log(this.state)
     const mesProduits = this.state.items.map((item, index)=>{
-                                              return <li key={item.id}>{item.nom}</li>
-                                              });
+                                              //return <Produit key={item.id} nom={item.nom} fabricant={item.fabricant} id={item.id} />
+                                              return <Produit key={item.id} produit={item} />
+                                              //return <Produit key={item.id} {...item} />
+                                              })
 
     return(
       <article>
         <h1>Liste de produit</h1>
-        <section>
-          <ul>
-          {mesProduits} 
-        </ul>
+        <section className='listeProduit'>
+          <p>Il y a {mesProduits.length} produits</p>
+         {mesProduits}
 
         </section>
 
