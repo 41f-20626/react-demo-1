@@ -10,12 +10,14 @@ export default class App extends React.Component{
   constructor(){
     super();
     this.state = {  // État
-      compteur : 0  
+      courriel : "",
+      login : false  
     };
 
     /*this.augmenter = this.augmenter.bind(this);
     this.decroitre = this.decroitre.bind(this);
     */
+   this.login = this.login.bind(this);
   }
 
   /*augmenter(){
@@ -38,17 +40,23 @@ export default class App extends React.Component{
 
 
   }*/
+
+  login(sCourriel){
+    console.log(sCourriel);
+    this.setState({courriel : sCourriel})
+  }
+
   render(){
 
     // Il peut y avoir du code ici...
 
     return(
       <Router>
-        <Entete titre="Mon application react"/>
+        <Entete titre="Mon application react" fctLogin={this.login}  />
         <Routes>
           <Route path="/" element={<Accueil/>} />
           <Route path="/produit" element={<ListeProduit/>} />
-          <Route path="/produit/:id_biere" element={<DetailsProduit/>} />
+          <Route path="/produit/:id_biere" element={<DetailsProduit courriel={this.state.courriel}/>} />
              
           <Route path="*" element={<p>Page non trouvée</p>} />
         </Routes>
