@@ -52,7 +52,6 @@ export default class App extends React.Component{
              
           <Route path="*" element={<p>Page non trouvée</p>} />
         </Routes>
-
       </Router>
       
       

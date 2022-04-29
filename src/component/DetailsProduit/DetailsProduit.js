@@ -1,42 +1,41 @@
 import './DetailsProduit.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 
+export default function DetailsProduit(props) {
+    const params = useParams(); // Récupère les paramètres de l'URL
 
-export default class DetailsProduit extends React.Component{
-  constructor(props){
-    super(props);
+    const [biere, setBiere] = useState({nom:"test"});
+    const [commentaires, setCommentaires] = useState([]);
+    //console.log(biere, setBiere);
 
-    this.state = {
-      items: []
+    console.log(params);
+    useEffect(()=>{
+      fetch("http://127.0.0.1:8000/webservice/php/biere/"+params.id_biere)
+        .then(reponse => reponse.json())
+        .then(donnees => {
+          setBiere(donnees.data)
+        })
 
-    };
-    console.log("constructeur");
-
-  }
-
-  componentDidMount(){
+      fetch("http://127.0.0.1:8000/webservice/php/biere/"+params.id_biere+ "/commentaire")
+        .then(reponse => reponse.json())
+        .then(donnees => {
+          setCommentaires(donnees.data)
+          console.log(donnees.data)
+        })
+    }, [setBiere, setCommentaires]);
     
-    console.log(this.props);
-    /*fetch("http://127.0.0.1:8000/webservice/php/biere/")
-      .then(reponse => reponse.json())
-      .then(donnees => {
-        this.setState({items : donnees.data});
-        
-        console.log(donnees);
-      })*/
+    const aCommentaires = commentaires.map((comment, index)=>{
+      return <blockquote>{comment.commentaire} par {comment.courriel}</blockquote>;
+    })
 
-
-  }
-
-
-  render(){
     
     return(
       <article>
-        un Produit avec ses détails
+       <p>Nom de la bière : {biere?.nom}</p>
+        {aCommentaires}
+
       </article>
     );
-  }
-
 }
